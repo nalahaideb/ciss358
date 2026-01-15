@@ -1,0 +1,108 @@
+\newsection{OCaml Syntax and Structure}
+
+\dated{12/15/25}
+
+\topic{Types and Typing}
+
+So far what I'm reading is that OCaml is going to be quite a bit stranger a beast to handle than C/C++/Python and even compared to LaTeX it is strange.
+
+There is an editor that i can with \verb!ocaml! in the console, which is what most of the tutorial online is talking about.
+
+First off, \emph{\textlg{variables are immutable}}, which is to say theyre not actually variables they're more like \textbf{constants}.
+
+Similar to python, OCaml has \textbf{\underline{type inference}}, so doing
+\centerthis{\texttt{let n = 1 + 2}}
+would yield a constant integer named \verb!n! with the value of that expression.
+
+%============= SIDE NOTE ======================
+\sidenote{there are lots of tutorials that go over OCaml and its basic introduction\\
+  but what i had to find out was the syntax for its live editor \texttt{utop}\\
+  was not the same as the syntax for its compiled files ending in \texttt{.ml}\\}
+
+This is a \textbf{\texthg{VERY}} math focused language, as the \verb!let! keyword could tell you.\\\\\\
+
+%TOPIC EQUALITY
+\topic{Equality, '=' and '=='}
+\textlg{\underline{An immediate issue that MUST BE ADDRESSED:}}
+\centerthis{ '=' and '==' \textbf{CAN MEAN THE SAME THING!!!}}
+
+This example is illustrated as follows:
+
+We enter this statement, \verb!let dummy = "hi" = "hello"!. This isn't a cascading operator of
+string assignments which lead to a variable, this is an assignment of a \emph{boolean} since the
+'=' operator in the context of a variable acted as '==', determing equality. So now, the
+variable \verb!dummy! \emph{is actually a boolean bound to} \verb!false!.
+
+The tutorial states that OCaml does respect '==' as an assessor of equality, though only physical which i am unsure as to what that means right now.
+\textbf{Some other operators:}
+\begin{itemize}
+\item \texttt{=}: ASSIGNMENT and EQUALITY
+\item \texttt{<>}: NEGATION of '='
+\item \texttt{==}: PHYSICAL EQUALITY
+\item \texttt{!=}: NEGATION of '=='\\\\\\
+\end{itemize}
+
+%TOPIC IF THEN ELSE
+\topic{If/Then/Else}
+
+Hereraraerareararhoooooooooooooooooooooo
+
+Continuing from the previous example, i have something i tried out because i was curious:
+\begin{console}
+# let x = if "penis" <> "balls" then 2 else 1;;
+val x : int = 2
+\end{console}
+
+The structure for an \verb!if-else! statement has changed, at least for live-interpretation.
+It's stated in the tutorial and rings true and clear enough that it's worth repeating here:
+\centerthis{\textbf{the ternary operator in C++ and the if-then-else expressions here are one and the same}}
+
+except that OCaml's is more verbose in what it means.\\\\\\
+
+
+%TOPIC VARIABLE SCOPE
+\topic{Variable Scopes}
+I didn't really know what else to call this since it looks quite strange.
+\begin{console}
+# let y = 50 in y * y;;
+- : int = 2500
+
+# y;;
+Error: Unbound value y
+\end{console}
+What this looks like and what the tutorial says are somewhat similar, in that \verb!y! is assigned a value of 50, then further in the miniature single-line scope defined by the keyword \verb!in!, \verb!y * y! forms 2500 which is then returned to the compiler.
+
+\emph{\textlg{\textbf{BUT}}} since this was a local-scope on a single line, we no longer have a concrete assignment of any value to the variable \verb!y! since it was only given purpose/form
+inside of that scope.
+
+I wouldn't know how to implement this in C++ since that is just so incredibly strange there is an opportunity for a single variable to create an entire scope with reference to itself as if it'd already been declared.
+
+in the same vein it is quite interesting when i looked at this similar piece of code:
+
+\begin{console}
+# let a = 1 in
+  let b = 2 in
+    a + b;;
+- : int = 3
+\end{console}
+
+This essentially takes a variable \verb!a!'s scope, injects it with variable \verb!b!'s scope
+and performs an operation on it all within that little area. So this on second thought is quite
+handy given that OCaml's ``variables'' are immutable, we have miniature local scopes that can
+use a variable \verb!xyz! for some computation with any other number of variables, then after
+the computation is done they can destroy it so as to not pollute the namespace of the rest of
+the program.\\\\\\
+
+\dated{12/16/25}
+\topic{Functions}
+Here's a concrete piece of code to break down:
+
+\begin{console}
+# let square x = x * x;;
+val square : int -> int = <fun>
+
+# square 50;;
+- : int = 2500
+\end{console}
+in this snippet, the function is both given a name \verb!square! and a single parameter \verb!x!. The parameter is used to compute its square, defined after \verb!=!.
+We see what OCaml internalizes the statement as in the second line, \verb!val square : int -> int = <fun>!

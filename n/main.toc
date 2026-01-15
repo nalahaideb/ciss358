@@ -1,0 +1,4 @@
+\contentsline {chapter}{\numberline {1}The first chapter}{3}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}This is the first section}{3}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}This is the second section}{3}{section.1.2}% 
+\contentsline {section}{\numberline {1.3}Einstein says}{3}{section.1.3}% 

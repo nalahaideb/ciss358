@@ -1,0 +1,5 @@
+%-*-latex-*-
+%\documentclass[a4paper]{article}
+\input{thispreamble.tex}
+\input{chapters.tex}
+\input{thispostamble.tex}

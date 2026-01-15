@@ -1,0 +1,161 @@
+%% \usepackage[utf8]{inputenc}
+%% \usepackage[T1]{fontenc}
+%% \usepackage{geometry}
+%% \usepackage{xcolor}
+%% \usepackage{amsmath, amssymb}
+%% \usepackage{tikz}
+%% \usepackage{listings} % For code
+%% \usepackage{tcolorbox} % For definitions
+%% \usepackage{marginnote} % For better sidenotes
+
+%% % --- LAYOUT CONFIGURATION ---
+%% % 1. This handles the "Newlines" issue.
+%% % It separates paragraphs by space, not indentation.
+%% % You just need to leave ONE empty line in the .tex file to separate thoughts.
+%% \usepackage[parskip]{parskip} 
+
+%% % 2. Margins setup to allow space for sidenotes
+%% \geometry{
+%%     left=2cm,
+%%     right=5cm, % Extra space on right for notes
+%%     top=2cm,
+%%     bottom=2cm,
+%%     marginparwidth=4cm,
+%%     marginparsep=0.5cm
+%% }
+
+%% % --- OCAML CODE STYLING ---
+%% \definecolor{codegreen}{rgb}{0,0.6,0}
+%% \definecolor{codegray}{rgb}{0.5,0.5,0.5}
+%% \definecolor{codepurple}{rgb}{0.58,0,0.82}
+%% \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%% \lstdefinelanguage{OCaml}{
+%%   keywords={let, rec, match, with, type, of, if, then, else, begin, end, val, fun, function, module, struct, sig},
+%%   keywordstyle=\color{blue}\bfseries,
+%%   ndkeywords={int, string, float, bool, list},
+%%   ndkeywordstyle=\color{codepurple}\bfseries,
+%%   identifierstyle=\color{black},
+%%   sensitive=true,
+%%   comment=[n]{(*}{*)},
+%%   commentstyle=\color{codegreen}\ttfamily,
+%%   stringstyle=\color{red}\ttfamily,
+%%   morestring=[b]"
+%% }
+
+%% \lstset{
+%%     backgroundcolor=\color{backcolour},   
+%%     basicstyle=\ttfamily\small,
+%%     breakatwhitespace=false,         
+%%     breaklines=true,                 
+%%     captionpos=b,                    
+%%     keepspaces=true,                 
+%%     numbers=left,                    
+%%     numbersep=5pt,                  
+%%     showspaces=false,                
+%%     showstringspaces=false,
+%%     showtabs=false,                  
+%%     tabsize=2,
+%%     frame=lines
+%% }
+
+% Shortcut for inline code (e.g. "use the `let` keyword")
+\newcommand{\code}[1]{\texttt{\color{blue}#1}}
+
+% Environment for OCaml blocks
+\lstnewenvironment{ocaml}
+{\lstset{language=OCaml}}
+{}
+
+% --- DEFINITION & CONCEPT BOXES ---
+% Replaces your \lemma command with a nice box
+\newtcolorbox{concept}[1]{
+  colback=blue!5!white,
+  colframe=blue!75!black,
+  title=\textbf{DEFINITION: #1},
+  sharp corners=south,
+  boxrule=0.5mm
+}
+
+\newtcolorbox{warning}{
+  colback=red!5!white,
+  colframe=red!75!black,
+  title=\textbf{WATCH OUT!},
+  boxrule=0.5mm
+}
+
+% --- SIDENOTES ---
+\newcommand{\sidenote}[1]{%
+  \marginnote{\footnotesize \textit{\color{blue!70!black} $\rightarrow$ #1}}%
+}
+
+% --- MATH & UTILS ---
+\newcommand{\vct}[1]{\overrightarrow{#1}}
+\newcommand{\prf}[1]{\noindent\underline{\textsc{Proof:}} #1}
+\newcommand{\mtx}[3]{#1_{#2,#3}} 
+
+% --- CUSTOM SECTIONS ---
+% This allows you to type \topic{Recursion}
+%% \newcommand{\topic}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
+%% \newcommand{\subtopic}[1]{\subsection*{#1}}
+
+% --- THE "STRICT NEWLINE" ENV ---
+% Use this environment if you want text to break exactly where you hit enter
+% without needing double spaces.
+\newenvironment{stricttext}
+{\par\begingroup\obeylines}
+{\endgroup\par}
+
+%% %-*-latex-*-
+%% %misc
+\newcommand{\dated}[1]{\textbf{\underline{\small{$-->$ #1}}} \normalsize\\}
+
+%% %math cmds
+%% \newcommand{\vct}[1]{\overrightarrow{#1}}
+%% \newcommand{\prf}[1]{\textlg{\underline{\textsc{Proof:}} } #1}
+%% %this is just for declaring a matrix M of size i-by-j, or specifying a point in the matrix
+%% \newcommand{\mtx}[3]{$#1_{#2,#3}$}
+
+%% %font adjuster cmds
+\newcommand{\texttn}[1]{\tiny {#1}\normalsize}
+\newcommand{\textsm}[1]{\small {#1}\normalsize}
+\newcommand{\textlg}[1]{\large {#1}\normalsize}
+\newcommand{\texthg}[1]{\huge {#1}\normalsize}
+
+
+%% %orientation and definition cmds
+\newcommand{\lemma}[1]{\underline{\texttt{DEFINITION:}} \textit{#1}\\}
+\newcommand{\newsection}[1]{\newpage\textbf{\texthg{#1}}\\}
+\newcommand{\topic}[1]{\textbf\underline{\textlg{\texttt{TOPIC:} #1}}\\\\}
+\newcommand{\subtext}[1]{\textit{\texttn{#1}}}
+\newcommand{\centerthis}[1]{\begin{center}#1\end{center}}
+\newcommand{\exercise}[2]{\textbf{Exercise #1 : }\texttt{#2}}
+
+%% %pinis
+%% \newcommand{\sidenote}[1]
+%%            {
+%%              \tikz[remember picture, overlay]
+%%                   {
+%%                     \node[anchor=east,
+%%                       text width=2cm,
+%%                       align=right,
+%%                       xshift=-8cm,
+%%                       font=\footnotesize]
+%%       at (current page.center) {#1};
+%%     }%
+%%            }
+
+%% %verbatim env           
+\lstnewenvironment{console}[1][]
+{\lstset{
+    basicstyle=\ttfamily,
+    backgroundcolor=\color{white},
+    frame=single,
+    framesep=3pt,
+    rulecolor=\color{black},
+    showspaces=false,    
+    showtabs=false,      
+    keepspaces=true,     
+    #1
+}}
+{}

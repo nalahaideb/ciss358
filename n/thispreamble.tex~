@@ -1,0 +1,6 @@
+%-*-latex-*-
+\textwidth=5.5in
+\documentclass[a4paper]{letter}
+\input{thispackages}
+\input{thismacros}
+\begin{document}

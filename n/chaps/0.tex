@@ -1,0 +1,37 @@
+%correctness, dated 1-14-26
+\newsection{Correctness}
+
+It is \emph{\textbf{impossible}} to design an algorithm to analyze if general algorithms are going to halt or not, emphasis on \textit{general}.
+\subtext{\underline{Halting Problem}}
+
+
+With specific algorithms or base-cases in such algorithms it is possible to know when and how it will halt.
+
+\topic{Correctness via induction}
+
+\textbf{Induction}
+Accepted axioms:
+\begin{itemize}
+\item
+  Well-Ordering Principle (WOP):
+  \[ if X \subseteq \mathbb{N} = {0, 1, \dots}\] is nonempty, then X has a least element $\exists m \in X$ s.t. $m \leq x$,  $\forall x \in X$ \sidenote{``LEAST'' IN THIS CASE \textbf{ DOES NOT} mean it is WITHIN THE BOUNDS. It means there is an element that is \textit{SMALLER} THAN THE SMALLEST ELEMENT IN X \EMPHASIZE{!!!}}
+\item
+Let $P$ be a proposition on $\mathbb{N}$, i.e $\forall$ $n \in \mathbb{N}$, then
+
+$P(n)$ can be true or false if
+\begin{enumerate}
+\item $P(n_0)$ true
+\item $P(n), P(n_1), P(n_2), \dots, P(n)$ is true for all $n \geq n_0$, $n \in \mathbb{N}$
+\end{enumerate}
+Then $P(n)$ is true $\forall n \in \mathbb{n}$, $n \geq n_0$ \subtext{Strong Induction Method}
+
+\item
+P as above:
+\begin{enumerate}
+\item $P(n_0)$ true
+\item $P(n) \implies P(n + 1)$ is true for all $n \geq n_0$, $n \in \mathbb{N}$
+\end{enumerate}
+\end{itemize}
+
+\sidenote{\EMPHASIZE{Euler's Characteristic Formula:} A relationship for \underline{planar graphs}, which are graphs capable of being laid out on a table-top with NO crossing edges}
+

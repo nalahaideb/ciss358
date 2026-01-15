@@ -1,0 +1,6 @@
+import os
+dir_ = os.cwd() + "/chaps"
+f = os.listdir(dir_)
+chaps = os.cwd() + "/chap.tex"
+for i in f:
+    
