@@ -1,0 +1,143 @@
+//page 17 chapter 110
+
+
+#include <iostream>
+#include <iomanip>
+
+const int ROWS = 5;
+const int COLS = 5;
+
+void pprint(int path[ROWS * COLS][2],
+            int & pathlen)
+{
+  int x[ROWS][COLS] = {{0}};
+  for (int i = 0; i < pathlen; i++)
+  {
+    int r = path[i][0];
+    int c = path[i][1];
+    x[r][c] = i + 1;
+  }
+  for (int i = 0; i < COLS; i++) std::cout << "+--";
+  std::cout << "+\n";
+  for (int r = 0; r < ROWS; r++)
+  {
+    for (int c = 0; c < COLS; c++)
+    {
+      std::cout << '|';
+      if (x[r][c] == 0)
+        std::cout << std::setw(2) << ' ';
+      else
+        std::cout << std::setw(2) << x[r][c];
+    }
+    std::cout << '|' << std::endl;
+    for (int i = 0; i < COLS; i++) std::cout << "+--";
+    std::cout << "+\n";
+  }
+}
+
+
+bool solve(int x[ROWS][COLS],
+           int path[ROWS * COLS][2],
+           int & pathlen)
+{
+  pprint(path, pathlen);
+
+  if (pathlen == ROWS * COLS)
+  {
+    return true; // SUCCESS case
+  }
+  else
+  {
+    // compute options
+    if (pathlen == 0)
+    {
+      // Path is empty: we can start anywhere
+      for (int r = 0; r < ROWS; r++)
+      {
+        for (int c = 0; c < COLS; c++)
+        {
+          x[r][c] = 1; pathlen = 1;
+          path[0][0] = r; path[0][1] = c;
+          bool flag = solve(x, path, pathlen);
+          if (flag)
+          {
+            return true;
+          }
+          // undo
+          x[r][c] = 0; pathlen = 0;
+        }
+      }
+    }
+    else
+    {
+      int r = path[pathlen - 1][0], c = path[pathlen - 1][1];
+
+      // There are 8 options (some outside the board)
+      int moves[8][2] = {{-2, -1},
+                         {-2, +1},
+                         {-1, -2},
+                         {-1, +2},
+                         {+1, -2},
+                         {+1, +2},
+                         {+2, -1},
+                         {+2, +1}};
+      for (int i = 0; i < 8; i++)
+      {
+        int newr = r + moves[i][0];
+        int newc = c + moves[i][1];
+        if (0 <= newr && newr < ROWS &&
+            0 <= newc && newc < COLS)
+        {
+          if (x[newr][newc] == 0)
+          {
+            // CASE: (newr, newc) not occupied
+            path[pathlen][0] = newr;
+            path[pathlen][1] = newc;
+            x[newr][newc] = pathlen + 1;
+            pathlen++;
+            bool flag = solve(x, path, pathlen);
+            if (flag)
+            {
+              return true;
+            }
+
+            // CASE: (newr, newc) not occupied
+            // Backtrack
+            x[newr][newc] = 0;
+            pathlen--;
+            std::cout << "BACKTRACK!\n";
+            pprint(path, pathlen);
+          }
+          else
+          {
+            // The current cell is occupied.
+          }
+        }
+      }
+    }
+  }
+  return false;
+}
+int main()
+{
+  int x[ROWS][COLS] = {{0}};
+  int path[ROWS * COLS][2];
+  int pathlen = 0;
+
+  bool flag = solve(x, path, pathlen);
+  if (flag)
+  {
+    std::cout << "SUCCESS!" << std::endl;
+    for (int i = 0; i < ROWS * COLS; i++)
+    {
+      std::cout << path[i][0] << ',' << path[i][1]
+                << '\n';
+    }
+  }
+  else
+  {
+    std::cout << "FAILURE!\n";
+  }
+
+  return 0;
+}

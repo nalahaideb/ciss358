@@ -1,0 +1,54 @@
+\newsection{110: Search Algorithms}
+\topic{Main idea}
+A pertinent idea Liow mentions is the \emph{\underline{partial solutions}} that make up a search algorithm. We describe algorithms in stages, where we perform one option such as sorting, then another like mathematical operations: but they are clearly distinct from one another. Though distinct, they help construct the piece of the puzzle the next leg of the algorithm will focus on. This is very similar to the issue of sub-problems he mentions that we deal with in recursion or general problem solving.
+
+
+\newsection{110.1: Backtrack}
+\topic{Decision-making}
+The idea of search algorithms is to make decisions. We want the decision to be correct as much as possible, but when it isn't we are left with the last possible option: return from where we came and make another (maybe educated) decision in order to try something that may lead us to a correct solution.
+
+This is exemplified best by \textbf{depth-first searches}, where we exhaust a chain of decisions quickly to find a proper answer. Honestly reading this back as I write it, its starting to make a lot of sense. The idea for backtracking is like \centerthis{``i went this way for a little bit, i didnt quite find what i was looking for but if i go back a few paces, maybe the turns back behind me lead to the correct solution''}
+
+at least i hope thats what he was getting at
+
+\dated{1-22-26}
+\newsection{110.2: Pseudocode}
+
+So after reading some more, theres a \EMPHASIZE{very} important point i want to jot down for later:
+
+\textlg{\textit{backtracking should distinguish between ``forward'' and ``backward''}}
+
+What does that mean? \underline{\textbf{``forward''}} attempts to build an entire solution from the larger subset of smaller \underline{\textit{``partial solutions''}}. Sometimes its right, sometimes its wrong. if its right, then awesome we found a solution.
+
+\EMPHASIZE{BUT}, if its \emph{wrong}, we now have to define \underline{\textbf{``backward''}}. Backward in this case is trying to go back to a point in time where we had more \emph{potentially} correct options, more potential \textbf{partial solutions} we could use to build towards making a whole solution.
+
+
+\topic{Emphasis on efficiency}
+
+The above bit of text is explaining the general, bare-bones idea of a backtracking search solution. But to make it efficient there cant be too many items that comprise the solution.
+
+For example, if we know that a solution has options \verb!op_0, op_1, ... op_n!, and we start building a concrete solution with options \verb!op_0, op_5, op_10!, we wouldnt include them the next time we have to backtrack ALL the way back to that first iteration of finding a solution.
+
+On top of that, (hehe foreshadowing puns) it would be more prudent to \emph{add} the current working partial solution \emph{on top of} the existing solution instead of making separate objects for each and every stage of a partial solution fitting our overall algorithm.
+
+\newsection{110.2: Knight's tour}
+
+my solution for the \texttt{3 $\times$ 4} knight's tour question:
+
+\begin{tabular}{|c|c|c|c|}
+\hline
+
+\textlg{9} & \textlg{6} & \textlg{1} & \textlg{4} \\
+\hline
+
+\textlg{0} & \textlg{3} & \textlg{8} & \textlg{11} \\
+\hline
+
+\textlg{7} & \textlg{10} & \textlg{5} & \textlg{2} \\
+\hline
+\end{tabular}
+\newsection{110.10: Magic Square}
+
+\newsection{110.11: Sudoku Problem}
+
+

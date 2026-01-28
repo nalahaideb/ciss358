@@ -45,8 +45,99 @@ Assume \[1 + 2 + 3 ... + n \neq \frac{n(n+1)}{2}\]
 
 then, $\exists n_0 \geq 0 $ s.t. \[1 + 2 ... + n_0 \neq \frac{n_0(n_0 + 1)}{2} \]
 
-Let $\mathbb{X} = $ ${n | n \geq 0, n \in \mathbb{N}  $s.t.$ 1 + 2 + ... + n \neq \frac{n(n + 1)}{2}}$
+Let $\mathbb{X} = $ ${n | n \geq 0, n \in \mathbb{N}  s.t. 1 + 2 + ... + n \neq \frac{n(n + 1)}{2}}$
 
 Thus $\mathbb{X} \neq \null$
 
 Hence $\exists m \in \mathbb{X}$ that is the least element
+
+
+\dated{1-23-26}
+
+Proof to-do list:
+%\sout{} the elements in the list that are done
+\begin{itemize}
+\item
+Proof methods:
+\begin{itemize}
+\item
+direct proof (assume p, \textbf{\underline{by} xyz}, therefor p)
+\item
+proof by contrapositive (assume \textbf{not} p)
+\item
+proof by contradiction (assume p, \textbf{\underline{but} xyz}, therefor p)
+\end{itemize}
+\item
+\textbf{W}ell \textbf{O}rdering \textbf{P}rinciple, \textbf{W.O.P}
+
+\item
+Proof by Induction (both weak and strong)
+
+\item
+Combinatorial proof
+\begin{itemize}
+\item number of permutations = $n!$
+
+\item number of $r$-permutations from $n$ = $n(n - 1), \dots, (n - r + 1)$ = $\frac{n!}{r!}$
+\end{itemize}
+\item
+pigeonhole principle
+
+\item
+proof of inclusion - exclusion \textbf{\texttt{:\^(}}
+\item
+\item
+\end{itemize}
+
+For these proofs, if i want to progress towards a correct answer, Dr. Liow mentioned that we should \textbf{``make up a story''}.
+
+\EMPHASIZE{IMPORTANT!!!!}
+
+It sounds dumb but since math is already so abstracted, grounding it in a real-world use-case scenario helps to fit the components with logical conclusions so that when i take one step in a direction that is wrong, i can just say it out loud and if it doesnt make any logical sense i can take a step in a different direction to approach a better more logically sound answer.
+
+
+
+\newsection{GRAFFS!!!!! :DDDDD}
+
+the same formula for $v - e + f = 2$ correlates to the relationship between the number of \verb!v = vertices! and \verb!e = edges! between a type of graph called a \emph{tree}
+
+\proof{Euler's Handshaking Lemma}
+
+Eschewing undirected graphs \emph{\textbf{without loops or multi-edges}},
+
+Let $G$ be a graph.
+
+Then, $\sum{deg(v)}{\mathbb{u} \in \mathbb{V}} = 2 |E|$, where $G$ = ($V, E$).
+
+For the graph, \EMPHASIZE{python needs to work first ehehehe}
+
+%% \begin{python}
+%% from latextool_basic import *
+%% p = Plot()
+%% p += Grid(-5, -5, 5, 5)
+
+%% print(p)
+%% \end{python}
+
+We call the points where an edge touches a node an \textbf{incident point}
+
+In the above (a node without a label connets to a node (labeled p) at a point labeled p', from there it connects to another node that has a loop, labeled p'')
+
+The number of incident points can be counted in 2 ways:
+\begin{itemize}
+\item Enumerate all edges: $e_1, \dots, e_i$
+Each $e_i$ has 2 incident points, and there are no others.
+
+Therefore the number of incident points must be \textbf{2$|E|$}
+
+\item Enumerate all nodes: $v_1, \dots, v_m$
+
+Each $v_i$ has deg($v_i$) incident points, and there are no others.
+\end{itemize}
+
+
+Hence $\sum{deg(\mathbb{v}){\mathbb{v}} \in \mathbb{V}}$ = the total number of incident points
+
+which then = 2$|E|$!!! \EMPHASIZE{yay!!!}
+
+

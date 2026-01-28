@@ -1,0 +1,43 @@
+%-*-latex-*-
+
+We will attempt to prove that for every integer $n > 0$ there exists a unique combination of 2-powers that compose it, shown as follows:
+\[ x_0 \cdot 2^0 + x_1 \cdot 2^1 + x_2 \cdot 2^2 ... + x_i \cdot 2^k = n \]
+
+Where each $x$ in $[x_0, x_i]$ is an element in $\mathbb{X}$ that yap yap yap $k$ is highest power in $\mathbb{X}$, $i$ is the number of $x \in \mathbb{X}$ fix this shit later. 
+
+\begin{enumerate}
+\item[1]
+\textsc{Proof of Uniqueness}
+We will now prove that every $n \in \mathbb{N}$ is made up of \emph{unique} factors of 2-powers.
+
+Assume on the contrary that there is more than one way to represent a number with specific powers of 2. Then numbers $n$ are made up of factors 
+
+\[ x_0 \cdot 2^0 + x_1 \cdot 2^1 + x_2 \cdot 2^2 ... + x_i \cdot 2^k = n \]
+
+\[ y_0 \cdot 2^0 + y_1 \cdot 2^1 + y_2 \cdot 2^2 ... + y_i \cdot 2^k = m \]
+
+\item[2]
+\textsc{Base Case}:
+We will now prove the base case.
+
+Given that $n > 0$, there exists only one way to represent 1 in powers of 2.
+
+$2^0 = 1$
+
+\item[3]
+\textsc{Inductive Case}:
+We will now prove that each number $k$ s.t. $0 < k \leq n$ has a unique factorization of 2-powers.
+
+Assume $P(n)$. Then by corollary $1$, each $P(0 < k \leq n)$ is made of a unique set of 2-power factors for $n, (n + 1)$ that we can write as 
+
+\[n = {x_n_0 \cdot 2^0 + x_n_1 \cdot 2^1 + ... + x_n_i \cdot 2^{k_n}}\]
+
+\[(n + 1) = {x_n_0 \cdot 2^0 + x_n_1 \cdot 2^1 + ... + x_n_i \cdot 2^{k_n}}\]
+
+%part of me wants to go the even-odd route for proving things but that doesnt really make sense and isnt necessary. the idea was that if n+1 is even, we know it equals n except for 2^0, and we know that n has that 2^0 to be odd. if n is even, then n + 1 must be odd, and consequently must have 2^0. this would work for weka induction but its not super compelling for a strong induction argument.
+
+\qedsymbol{}
+
+\textsc{Proof via Well-Ordering Principle}:
+
+\qedsymbol{}

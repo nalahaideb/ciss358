@@ -17,12 +17,12 @@ chaps = open(chaps, "w")
 chapter_list = []
 for i in f:
     instr = "\\input{chaps/%s}\n" % i
-    if '~' not in instr:
+    if '~' not in instr and not os.path.isdir(os.getcwd() + '/chaps/' + i):
         chapter_list.append(i)
         #chaps.write(instr)
         #print(i)
     else:
-        print("ignoring temp file %s" % instr)
+        print("ignoring temp file or directory %s" % instr)
 chapter_list.sort(key=xyz)
 for i in chapter_list:
     instr = "\\input{chaps/%s}\n" % i

@@ -1,0 +1,37 @@
+%-*-latex-*-
+\underline{\textbf{Proof via weak induction of prime factorizaton:}}
+
+I posit there is a factorization for all elements $n \in \mathbb{N}$ where $n > 1$, making it the $P(n)$.
+
+\textsc{Base Case}:
+We will prove $P(n)$ for the smallest valid element.
+
+$P(2) = 2 \cdot 1$
+
+Since 2 is a prime and the only factor aside from 1, we are done and $P(n)$ holds.
+
+\textsc{Inductive Case}:
+We will now prove the inductive case, $P(n + 1)$. 
+Assume $P(n)$ holds given $n > 1$. Then, $P(n + 1)$ is either prime (in which case we are finished) or it is a composite number.
+
+If $n + 1$ is a composite number, then it can be rewritten as having factors $n + 1 = ab$. The process repeats, if $a$ and/or $b$ are prime, it is a factor. If they are composite, then they too have prime factors.
+\qedsymbol{}
+
+\textbf{\underline{Proof of prime factorization via strong induction:}}
+
+We will prove that $\forall n \in \mathbb{N}$ there is a prime factorization given that $n \geq 2$.
+
+\textsc{Base Case}:
+We will prove $P(n)$ for the smallest valid element.
+
+$P(2) = 2 \cdot 1$
+
+Since 2 is a prime and the only factor aside from 1, we are done and $P(n)$ holds.
+
+\textsc{Inductive Case}:
+We will now prove the inductive case for $P(2 \leq k < n + 1)$.
+
+Assume $P(n)$. Then $n + 1$ will either be composite or prime. If it is composite, then it is made up of factors $n + 1 = ab$. The factors $a, b$ \emph{must} be smaller than $n + 1$ and by the inductive hypothesis they too have a prime factorization.
+
+\qedsymbol{}
+\qed

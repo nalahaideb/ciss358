@@ -24,9 +24,10 @@ int main()
   return 0;
 }
 
-bool is_valid(const std::vector<int> & x)
+bool is_valid(const std::vector<int> & x, const int inquiry)
 {
-  for (int i = 0; i < x.size(); ++i)
+  //checks if "inquiry" is at a specified location, tries to move to another valid location if it has no avaliable spot 
+  for (int i = 0; i < 9; ++i)
   {
     
   }
@@ -87,12 +88,14 @@ void print(const std::vector<int> & x)
   const std::string bar = "+-------+-------+-------+";
 
   std::cout << bar << "\n";
+
   int offset = 0;
   for (int i = 0; i < 9; ++i)
   {
     std::cout << "|";
 
     print_line(x, i * 3);
+    
     //horizontal divider
     if ((i + 1) % 3 == 0 && i < 8)
     {
@@ -100,6 +103,6 @@ void print(const std::vector<int> & x)
     }
     offset += 3;
   }
-
-    std::cout << bar << "\n"; // Print bottom border
+  
+  std::cout << bar << "\n";
 }
